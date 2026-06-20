@@ -62,6 +62,32 @@ USA vs Paraguay,06/12/2026,09:00 PM,,,SoFi Stadium\, Los Angeles,Group D - FIFA 
 The script handles ICS niceties for you: special-character escaping, CRLF
 line endings, and long-line folding.
 
+## Accuracy & verification (read this)
+
+This schedule was reconstructed from web-search results because FIFA's and
+Wikipedia's pages were not directly fetchable in the build environment.
+Treat it as **best-effort, not authoritative**, and verify before relying on
+it:
+
+- **Solid:** the 12 groups and their teams (incl. the March 2026 playoff
+  winners), the 16 venues and their time zones, the tournament dates
+  (Jun 11 – Jul 19), and the opening match (Estadio Azteca) and final
+  (MetLife).
+- **Verify against FIFA's official fixtures:**
+  - Several group-stage **kickoff times** were derived from reported Eastern
+    Time and converted to venue-local; a few may be off by a slot. Known
+    soft spots: the Monterrey night games (Matches 12, 36) and a handful of
+    Round-of-32/16 times.
+  - Group-stage **match numbering / day ordering** and a few **home/away
+    orderings** follow FIFA's group-ordered convention; some aggregators
+    list them differently.
+  - **Knockout teams** are slot labels ("Quarter-final 3", etc.) until the
+    bracket fills in.
+
+To correct anything, edit `worldcup.csv` and re-run `python3 csv_to_ics.py`.
+The authoritative source is FIFA's official fixtures page
+(`fifa.com/.../fifaworldcup/`).
+
 ## Safety notes
 
 - CSV/ICS import is low-risk — it is just event data, not code.
